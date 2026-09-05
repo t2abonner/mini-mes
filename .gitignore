@@ -1,0 +1,26 @@
+# Зависимости
+node_modules/
+
+# Артефакты сборки
+dist/
+build/
+storybook-static/
+
+# Логи
+*.log
+npm-debug.log*
+
+# Переменные окружения
+.env
+.env.local
+.env.*.local
+
+# IDE и ОС
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Тесты и кэш
+coverage/
+*.tsbuildinfo
