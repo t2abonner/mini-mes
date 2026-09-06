@@ -1,0 +1,19 @@
+{
+  "name": "@mini-mes/eslint-config",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Общие конфигурации ESLint, Prettier и Stylelint для монорепозитория Mini-MES",
+  "main": "index.mjs",
+  "exports": {
+    ".": "./index.mjs"
+  },
+  "files": [
+    "index.mjs",
+    "base.mjs",
+    "react.mjs",
+    "node.mjs",
+    "prettier.config.mjs",
+    "stylelint.config.mjs"
+  ]
+}

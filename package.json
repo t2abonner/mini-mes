@@ -12,7 +12,32 @@
     "dev": "npm run dev:api & npm run dev:web",
     "dev:api": "npm run dev --workspace=apps/mock-api",
     "dev:web": "npm run dev --workspace=apps/web",
-    "lint": "npm run lint --workspaces --if-present",
-    "storybook": "npm run storybook --workspace=packages/ui"
+    "storybook": "npm run storybook --workspace=packages/ui",
+    "lint": "npm run lint:js && npm run lint:css && npm run lint:format",
+    "lint:js": "eslint .",
+    "lint:css": "stylelint \"apps/**/src/**/*.css\" \"packages/**/src/**/*.css\" --allow-empty-input",
+    "lint:format": "prettier --check .",
+    "format": "prettier --write ."
+  },
+  "devDependencies": {
+    "@eslint/js": "*",
+    "@mini-mes/eslint-config": "*",
+    "@mini-mes/tsconfig": "*",
+    "@types/node": "*",
+    "@types/react": "*",
+    "@types/react-dom": "*",
+    "eslint": "*",
+    "eslint-config-prettier": "*",
+    "eslint-plugin-react": "*",
+    "eslint-plugin-react-hooks": "*",
+    "eslint-plugin-react-refresh": "*",
+    "globals": "*",
+    "prettier": "*",
+    "stylelint": "*",
+    "stylelint-config-css-modules": "*",
+    "stylelint-config-standard": "*",
+    "stylelint-order": "*",
+    "typescript": "*",
+    "typescript-eslint": "*"
   }
 }
