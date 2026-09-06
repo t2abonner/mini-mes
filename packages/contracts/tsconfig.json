@@ -1,0 +1,7 @@
+{
+  "extends": "@mini-mes/tsconfig/base.json",
+  "compilerOptions": {
+    "types": []
+  },
+  "include": ["src"]
+}
