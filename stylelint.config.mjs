@@ -1,3 +1,3 @@
-import { stylelintConfig } from "@mini-mes/eslint-config";
+import { stylelintConfig } from '@mini-mes/eslint-config';
 
 export default stylelintConfig;

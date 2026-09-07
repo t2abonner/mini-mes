@@ -1,1 +1,1 @@
-console.log("Mini-MES mock-api is ready");
+console.log('Mini-MES mock-api is ready');
