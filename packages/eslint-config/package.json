@@ -6,7 +6,9 @@
   "description": "Общие конфигурации ESLint, Prettier и Stylelint для монорепозитория Mini-MES",
   "main": "index.mjs",
   "exports": {
-    ".": "./index.mjs"
+    ".": "./index.mjs",
+    "./prettier": "./prettier.config.mjs",
+    "./stylelint": "./stylelint.config.mjs"
   },
   "files": [
     "index.mjs",
