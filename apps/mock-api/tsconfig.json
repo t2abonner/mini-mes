@@ -1,0 +1,4 @@
+{
+  "extends": "@mini-mes/tsconfig/node.json",
+  "include": ["src"]
+}
