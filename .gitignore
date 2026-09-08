@@ -16,7 +16,9 @@ npm-debug.log*
 .env.*.local
 
 # IDE и ОС
-.vscode/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
 .idea/
 .DS_Store
 Thumbs.db
