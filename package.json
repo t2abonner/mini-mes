@@ -33,6 +33,8 @@
     "eslint-plugin-react-refresh": "^0.5.6",
     "generate-project-context": "^1.0.25",
     "globals": "^17.12.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.5.0",
     "prettier": "^3.9.6",
     "stylelint": "^17.15.0",
     "stylelint-config-css-modules": "^4.6.0",
