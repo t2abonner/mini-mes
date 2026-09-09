@@ -22,7 +22,6 @@ npm-debug.log*
 .idea/
 .DS_Store
 Thumbs.db
-.husky
 
 # Тесты и кэш
 coverage/
