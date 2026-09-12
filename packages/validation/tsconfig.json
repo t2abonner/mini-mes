@@ -1,7 +1,9 @@
 {
   "extends": "@mini-mes/tsconfig/base.json",
   "compilerOptions": {
-    "types": []
+    "types": ["node"],
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true
   },
   "include": ["src"]
 }
