@@ -8,6 +8,18 @@
       content="Mini-MES — учебная система оперативного управления производством"
     />
     <title>Mini-MES</title>
+    <script>
+      // Восстанавливаем сохранённую тему до загрузки приложения, чтобы избежать мигания.
+      // Ключ должен совпадать с ключом во временном переключателе темы в App.tsx.
+      try {
+        const theme = localStorage.getItem('mini-mes/theme');
+        if (theme === 'dark' || theme === 'light') {
+          document.documentElement.dataset.theme = theme;
+        }
+      } catch {
+        // Если localStorage недоступен, оставляем светлую тему по умолчанию.
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
