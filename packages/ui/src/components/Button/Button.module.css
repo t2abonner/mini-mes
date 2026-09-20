@@ -1,0 +1,101 @@
+/*
+   Кнопка UI-кита.
+   Варианты задают каскадные пользовательские свойства (--btn-*),
+   базовый класс .button их потребляет.
+   Порядок селекторов — по возрастанию специфичности,
+   чтобы не срабатывало правило Stylelint no-descending-specificity.
+ */
+
+.primary {
+  --btn-bg: var(--color-primary);
+  --btn-bg-hover: var(--color-primary-hover);
+  --btn-border: transparent;
+  --btn-color: var(--color-text-on-primary);
+}
+
+.secondary {
+  --btn-bg: var(--color-surface);
+  --btn-bg-hover: var(--color-hover);
+  --btn-border: var(--color-border);
+  --btn-color: var(--color-text);
+}
+
+.destructive {
+  --btn-bg: var(--color-destructive);
+  --btn-bg-hover: var(--color-destructive-hover);
+  --btn-border: transparent;
+  --btn-color: var(--color-text-on-destructive);
+}
+
+.ghost {
+  --btn-bg: transparent;
+  --btn-bg-hover: var(--color-hover);
+  --btn-border: transparent;
+  --btn-color: var(--color-text);
+}
+
+.sm {
+  font-size: 13px;
+  padding: 4px 10px;
+}
+
+.md {
+  font-size: 14px;
+  padding: 8px 16px;
+}
+
+.lg {
+  font-size: 16px;
+  padding: 10px 20px;
+}
+
+.button {
+  align-items: center;
+  background-color: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  border-radius: 6px;
+  color: var(--btn-color);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-weight: 500;
+  gap: 8px;
+  justify-content: center;
+  line-height: 1.5;
+  transition:
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.spinner {
+  animation: spin 0.7s linear infinite;
+  border: 2px solid currentcolor;
+  border-radius: 50%;
+  border-top-color: transparent;
+  display: inline-block;
+  flex-shrink: 0;
+  height: 14px;
+  width: 14px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.button:hover:not(:disabled) {
+  background-color: var(--btn-bg-hover);
+}
