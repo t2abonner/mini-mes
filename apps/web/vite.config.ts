@@ -15,6 +15,12 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
+    resolve: {
+      // Монорепа с install-strategy=nested: у packages/ui своя копия react
+      // (dev-зависимость для Storybook). Без dedupe импорт @mini-mes/ui
+      // притащит второй экземпляр React — хуки упадут с «Invalid hook call».
+      dedupe: ['react', 'react-dom'],
+    },
     server: {
       port: 5173,
       proxy: {

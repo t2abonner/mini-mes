@@ -1,0 +1,50 @@
+/*
+   Дизайн-токены светлой и тёмной темы.
+   Значения взяты без изменений из §18.9 спецификации реализации системы.
+   Канонический источник для пакета @mini-mes/ui.
+   TODO(MM-2xx): синхронизировать с apps/web/src/app/styles/theme.css —
+   приложение должно импортировать токены из @mini-mes/ui.
+ */
+:root {
+  --color-background: #fff;
+  --color-border: #e5e7eb;
+  --color-destructive: #dc2626;
+  --color-destructive-hover: #b91c1c;
+  --color-focus: #3b82f6;
+  --color-hover: #f3f4f6;
+  --color-primary: #1e40af;
+  --color-primary-hover: #1e3a8a;
+  --color-success: #16a34a;
+  --color-success-hover: #15803d;
+  --color-surface: #f8f9fa;
+  --color-text: #1a1a1a;
+  --color-text-on-destructive: #fff;
+  --color-text-on-primary: #fff;
+  --color-text-on-success: #fff;
+  --color-text-on-warning: #fff;
+  --color-text-secondary: #6b7280;
+  --color-warning: #ca8a04;
+  --color-warning-hover: #a16207;
+}
+
+[data-theme='dark'] {
+  --color-background: #0f172a;
+  --color-border: #334155;
+  --color-destructive: #ef4444;
+  --color-destructive-hover: #dc2626;
+  --color-focus: #60a5fa;
+  --color-hover: #334155;
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-success: #22c55e;
+  --color-success-hover: #16a34a;
+  --color-surface: #1e293b;
+  --color-text: #f1f5f9;
+  --color-text-on-destructive: #fff;
+  --color-text-on-primary: #fff;
+  --color-text-on-success: #fff;
+  --color-text-on-warning: #0f172a;
+  --color-text-secondary: #94a3b8;
+  --color-warning: #eab308;
+  --color-warning-hover: #ca8a04;
+}
