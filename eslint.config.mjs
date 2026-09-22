@@ -17,6 +17,7 @@ export default [
       '**/*.cjs',
       'package-lock.json',
       'docs/**',
+      '.kilo/**', // служебные worktree расширения Kilo Code
     ],
   },
   ...baseConfig,
