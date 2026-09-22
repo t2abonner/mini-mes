@@ -1,0 +1,47 @@
+/*
+  Поле ввода UI-кита.
+  Состояние ошибки задаётся каскадными пользовательскими свойствами (--field-*),
+  базовый класс .input их потребляет — тот же приём, что в Button (--btn-*).
+  Порядок селекторов — по возрастанию специфичности,
+  чтобы не срабатывало правило Stylelint no-descending-specificity.
+*/
+
+.input {
+  --field-border: var(--color-border);
+  --field-border-focus: var(--color-focus);
+
+  background-color: var(--color-background);
+  border: 1px solid var(--field-border);
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.5;
+  padding: 8px 12px;
+  transition: border-color 0.15s ease-in-out;
+  width: 100%;
+}
+
+.invalid {
+  --field-border: var(--color-destructive);
+  --field-border-focus: var(--color-destructive);
+}
+
+.input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--field-border-focus);
+  outline-offset: 1px;
+}
+
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.input:hover:not(:disabled, [aria-invalid='true']) {
+  --field-border: var(--color-text-secondary);
+}
