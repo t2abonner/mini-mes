@@ -1,0 +1,39 @@
+/*
+  Карточка UI-кита: контейнер для виджетов (карточка заказа,
+  карточка станка, блоки сводной статистики).
+  У самой карточки нет внутренних отступов — их задают секции
+  (CardHeader / CardContent / CardFooter). Так таблицу или список
+  можно разместить вплотную к краям карточки.
+*/
+
+.card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  color: var(--color-text);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 16px 0;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.content {
+  padding: 16px;
+}
+
+.footer {
+  border-top: 1px solid var(--color-border);
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
+  padding: 12px 16px;
+}

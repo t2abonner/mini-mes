@@ -1,0 +1,53 @@
+/*
+  Бейдж UI-кита.
+  Варианты задают каскадные пользовательские свойства (--badge-*),
+  базовый класс .badge их потребляет — тот же приём, что в Button (--btn-*).
+  Порядок селекторов — по возрастанию специфичности,
+  чтобы не срабатывало правило Stylelint no-descending-specificity.
+*/
+
+.neutral {
+  --badge-bg: var(--color-surface);
+  --badge-border: var(--color-border);
+  --badge-color: var(--color-text);
+}
+
+.primary {
+  --badge-bg: var(--color-primary);
+  --badge-border: transparent;
+  --badge-color: var(--color-text-on-primary);
+}
+
+.success {
+  --badge-bg: var(--color-success);
+  --badge-border: transparent;
+  --badge-color: var(--color-text-on-success);
+}
+
+.warning {
+  --badge-bg: var(--color-warning);
+  --badge-border: transparent;
+  --badge-color: var(--color-text-on-warning);
+}
+
+.destructive {
+  --badge-bg: var(--color-destructive);
+  --badge-border: transparent;
+  --badge-color: var(--color-text-on-destructive);
+}
+
+.badge {
+  align-items: center;
+  background-color: var(--badge-bg);
+  border: 1px solid var(--badge-border);
+  border-radius: 9999px;
+  color: var(--badge-color);
+  display: inline-flex;
+  font-size: 12px;
+  font-weight: 500;
+  gap: 4px;
+  justify-content: center;
+  line-height: 1.4;
+  padding: 2px 10px;
+  white-space: nowrap;
+}
