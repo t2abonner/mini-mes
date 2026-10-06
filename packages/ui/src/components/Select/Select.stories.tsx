@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { ComponentProps } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Select } from './Select';
@@ -163,9 +163,25 @@ export const DomainExamples: Story = {
 const DarkThemeComponent = () => {
   const [value, setValue] = useState('edging');
 
+  // Portal рендерит Select.Content в document.body, то есть ВНЕ обёртки
+  // с data-theme. Чтобы выпадающий список получил тёмные токены, ставим
+  // тему на <html> — ровно так, как это делает приложение (док. 6, §15.9).
+  // При размонтировании истории возвращаем прежнюю тему.
+  useEffect(() => {
+    const root = document.documentElement;
+    const previous = root.dataset.theme;
+    root.dataset.theme = 'dark';
+    return () => {
+      if (previous === undefined) {
+        delete root.dataset.theme;
+      } else {
+        root.dataset.theme = previous;
+      }
+    };
+  }, []);
+
   return (
     <div
-      data-theme="dark"
       style={{
         backgroundColor: 'var(--color-background)',
         borderRadius: 8,

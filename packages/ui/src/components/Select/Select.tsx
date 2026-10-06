@@ -27,6 +27,10 @@ export interface SelectProps {
   disabled?: boolean;
   /** Пометить поле как невалидное. */
   invalid?: boolean;
+  /** Дополнительный класс триггера: раскладка (ширина, выравнивание) снаружи. */
+  className?: string;
+  /** id элемента с описанием ошибки (FieldError) для связи aria-describedby. */
+  ariaDescribedBy?: string;
 }
 
 /**
@@ -38,11 +42,24 @@ export interface SelectProps {
  * чтобы компонент удобно использовался в формах и фильтрах дашборда.
  */
 export const Select = forwardRef<HTMLButtonElement, SelectProps>(
-  ({ id, value, onValueChange, options, placeholder, disabled = false, invalid = false }, ref) => {
+  (
+    {
+      id,
+      value,
+      onValueChange,
+      options,
+      placeholder,
+      disabled = false,
+      invalid = false,
+      className,
+      ariaDescribedBy,
+    },
+    ref,
+  ) => {
     // noUncheckedIndexedAccess делает доступ к стиля «строка | undefined»,
     // поэтому фильтруем с предикатом типа, чтобы получить ровно string[]
-    const classes = [styles.trigger, invalid ? styles.invalid : undefined]
-      .filter((className): className is string => Boolean(className))
+    const classes = [styles.trigger, invalid ? styles.invalid : undefined, className]
+      .filter((item): item is string => Boolean(item))
       .join(' ');
 
     return (
@@ -53,6 +70,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           type="button"
           className={classes}
           aria-invalid={invalid || undefined}
+          aria-describedby={ariaDescribedBy}
         >
           <SelectPrimitive.Value className={styles.value} placeholder={placeholder} />
           <SelectPrimitive.Icon className={styles.icon}>
