@@ -1,0 +1,125 @@
+/*
+  Select UI-кита.
+  Триггер наследует визуальный язык Input через каскадные свойства --field-*.
+  Выпадающий список рисуется в портале поверх интерфейса.
+  Порядок селекторов — по возрастанию специфичности,
+  чтобы не срабатывало правило Stylelint no-descending-specificity.
+*/
+
+.trigger {
+  --field-border: var(--color-border);
+  --field-border-focus: var(--color-focus);
+
+  align-items: center;
+  background-color: var(--color-background);
+  border: 1px solid var(--field-border);
+  border-radius: 6px;
+  box-sizing: border-box;
+  color: var(--color-text);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: inherit;
+  font-size: 14px;
+  gap: 8px;
+  justify-content: space-between;
+  line-height: 1.5;
+  min-height: 38px;
+  padding: 8px 12px;
+  transition: border-color 0.15s ease-in-out;
+  width: 100%;
+}
+
+.invalid {
+  --field-border: var(--color-destructive);
+  --field-border-focus: var(--color-destructive);
+}
+
+.value {
+  flex: 1 1 auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.value[data-placeholder] {
+  color: var(--color-text-secondary);
+}
+
+.icon {
+  align-items: center;
+  color: var(--color-text-secondary);
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+}
+
+.trigger:focus-visible {
+  outline: 2px solid var(--field-border-focus);
+  outline-offset: 1px;
+}
+
+.trigger:disabled {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.trigger:hover:not(:disabled, [aria-invalid='true']) {
+  --field-border: var(--color-text-secondary);
+}
+
+.content {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 12%);
+  min-width: var(--radix-select-trigger-width);
+  overflow: hidden;
+  z-index: 50;
+}
+
+.viewport {
+  max-height: 280px;
+  padding: 4px;
+}
+
+.item {
+  align-items: center;
+  border-radius: 4px;
+  color: var(--color-text);
+  cursor: pointer;
+  display: flex;
+  font-size: 14px;
+  gap: 8px;
+  justify-content: space-between;
+  line-height: 1.4;
+  outline: none;
+  padding: 8px 12px;
+  user-select: none;
+}
+
+.item[data-highlighted] {
+  background-color: var(--color-hover);
+}
+
+.item[data-disabled] {
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+}
+
+.itemIndicator {
+  align-items: center;
+  color: var(--color-primary);
+  display: inline-flex;
+  flex-shrink: 0;
+  justify-content: center;
+}
+
+.scrollButton {
+  align-items: center;
+  background-color: var(--color-surface);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  padding: 4px;
+}
