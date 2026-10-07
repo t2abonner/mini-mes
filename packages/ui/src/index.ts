@@ -7,6 +7,18 @@ export type { ButtonProps, ButtonSize, ButtonVariant } from './components/Button
 export { Card, CardContent, CardFooter, CardHeader, CardTitle } from './components/Card';
 export type { CardProps, CardSectionProps } from './components/Card';
 
+export {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from './components/Dialog';
+export type { DialogContentProps, DialogProps, DialogSectionProps } from './components/Dialog';
+
 export { FieldError } from './components/FieldError';
 export type { FieldErrorProps } from './components/FieldError';
 
