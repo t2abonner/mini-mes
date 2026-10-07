@@ -22,6 +22,7 @@
     "vite": "^6.4.3"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.2.0",
     "@radix-ui/react-select": "^2.3.7",
     "lucide-react": "^1.48.0"
   }
