@@ -28,5 +28,13 @@ export type { InputProps } from './components/Input';
 export { Select } from './components/Select';
 export type { SelectOption, SelectProps } from './components/Select';
 
+export { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
+export type {
+  TabsContentProps,
+  TabsListProps,
+  TabsProps,
+  TabsTriggerProps,
+} from './components/Tabs';
+
 export { Textarea } from './components/Textarea';
 export type { TextareaProps } from './components/Textarea';
