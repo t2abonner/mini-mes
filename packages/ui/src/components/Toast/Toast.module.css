@@ -1,0 +1,167 @@
+/*
+   Тосты UI-кита.
+   Варианты задают каскадные пользовательские свойства (--toast-*),
+   базовый класс .toast их потребляет — тот же приём, что в Button (--btn-*).
+   Порядок селекторов — по возрастанию специфичности,
+   чтобы не срабатывало правило Stylelint no-descending-specificity.
+ */
+
+.neutral {
+  --toast-bg: var(--color-surface);
+  --toast-border: var(--color-border);
+  --toast-color: var(--color-text);
+  --toast-muted: var(--color-text-secondary);
+}
+
+.success {
+  --toast-bg: var(--color-success);
+  --toast-border: transparent;
+  --toast-color: var(--color-text-on-success);
+  --toast-muted: var(--color-text-on-success);
+}
+
+.warning {
+  --toast-bg: var(--color-warning);
+  --toast-border: transparent;
+  --toast-color: var(--color-text-on-warning);
+  --toast-muted: var(--color-text-on-warning);
+}
+
+.destructive {
+  --toast-bg: var(--color-destructive);
+  --toast-border: transparent;
+  --toast-color: var(--color-text-on-destructive);
+  --toast-muted: var(--color-text-on-destructive);
+}
+
+/* Область показа: фиксированный список в правом нижнем углу. */
+.viewport {
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  max-width: 380px;
+  outline: none;
+  padding: 24px;
+  position: fixed;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+/* Сам тост. */
+.toast {
+  background-color: var(--toast-bg);
+  border: 1px solid var(--toast-border);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgb(15 23 42 / 18%);
+  color: var(--toast-color);
+  display: flex;
+  gap: 12px;
+  padding: 14px 16px;
+  position: relative;
+  width: 100%;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.description {
+  color: var(--toast-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Кнопка закрытия «×». */
+.close {
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: inherit;
+  cursor: pointer;
+  display: inline-flex;
+  flex-shrink: 0;
+  height: 24px;
+  justify-content: center;
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 24px;
+}
+
+.close:hover {
+  background-color: var(--color-hover);
+}
+
+.close:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* --- Анимации появления/исчезновения и свайпа (атрибуты ставит Radix) --- */
+
+.toast[data-state='open'] {
+  animation: toast-slide-in 0.2s ease-out;
+}
+
+.toast[data-state='closed'] {
+  animation: toast-hide 0.15s ease-in;
+}
+
+.toast[data-swipe='move'] {
+  transform: translateX(var(--radix-toast-swipe-move-x));
+}
+
+.toast[data-swipe='cancel'] {
+  transform: translateX(0);
+  transition: transform 0.15s ease-out;
+}
+
+.toast[data-swipe='end'] {
+  animation: toast-swipe-out 0.1s ease-out;
+}
+
+@keyframes toast-slide-in {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes toast-hide {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes toast-swipe-out {
+  from {
+    transform: translateX(var(--radix-toast-swipe-end-x));
+  }
+
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .toast {
+    animation: none;
+  }
+}
