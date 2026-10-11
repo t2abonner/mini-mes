@@ -30,3 +30,15 @@ export type {
 } from './components/Tabs';
 export { Textarea } from './components/Textarea';
 export type { TextareaProps } from './components/Textarea';
+export {
+  Toast,
+  ToastAction,
+  ToastClose,
+  ToastDescription,
+  ToastProvider,
+  ToastTitle,
+  ToastViewport,
+} from './components/Toast';
+export type { ToastProps, ToastVariant } from './components/Toast';
+export { useToasts } from './components/Toast';
+export type { ToastData, ToastOptions } from './components/Toast';
