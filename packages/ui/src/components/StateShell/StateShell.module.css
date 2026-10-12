@@ -1,0 +1,45 @@
+/*
+   StateShell — внутренний каркас «состояний данных» UI-кита (MM-209).
+   EmptyState и ErrorState собираются на этом общем скелете, поэтому
+   состояния «пусто» и «ошибка» выглядят единым семейством: одинаковые
+   центрирование, типографика и отступы.
+   Порядок селекторов — по возрастанию специфичности
+   (правило Stylelint no-descending-specificity).
+ */
+.shell {
+  align-items: center;
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  padding: 32px 24px;
+  text-align: center;
+}
+
+.icon {
+  align-items: center;
+  color: var(--color-text-secondary);
+  display: inline-flex;
+  justify-content: center;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.description {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 40ch;
+}
+
+.action {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 8px;
+}
