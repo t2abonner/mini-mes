@@ -1,0 +1,70 @@
+/*
+   Лоадер UI-кита (MM-209): спиннер + опциональная видимая подпись.
+   Габариты каркаса (колонка по центру, padding 32px 24px) сознательно
+   совпадают со StateShell: три состояния данных занимают одинаковое
+   место внутри карточек дашборда. Приём анимации — как у спиннера
+   Button, но в большем размере.
+ */
+.loader {
+  align-items: center;
+  color: var(--color-text);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  padding: 32px 24px;
+}
+
+.spinner {
+  animation: spin 0.7s linear infinite;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  border-top-color: var(--color-primary);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sm {
+  height: 16px;
+  width: 16px;
+}
+
+.md {
+  height: 24px;
+  width: 24px;
+}
+
+.lg {
+  height: 32px;
+  width: 32px;
+}
+
+.label {
+  color: var(--color-text-secondary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.visuallyHidden {
+  border: 0;
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner {
+    animation: none;
+  }
+}

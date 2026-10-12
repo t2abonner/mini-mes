@@ -15,10 +15,16 @@ export {
   DialogTrigger,
 } from './components/Dialog';
 export type { DialogContentProps, DialogProps, DialogSectionProps } from './components/Dialog';
+export { EmptyState } from './components/EmptyState';
+export type { EmptyStateProps } from './components/EmptyState';
+export { ErrorState } from './components/ErrorState';
+export type { ErrorStateProps } from './components/ErrorState';
 export { FieldError } from './components/FieldError';
 export type { FieldErrorProps } from './components/FieldError';
 export { Input } from './components/Input';
 export type { InputProps } from './components/Input';
+export { Loader } from './components/Loader';
+export type { LoaderProps, LoaderSize } from './components/Loader';
 export { Select } from './components/Select';
 export type { SelectOption, SelectProps } from './components/Select';
 export { Tabs, TabsContent, TabsList, TabsTrigger } from './components/Tabs';
