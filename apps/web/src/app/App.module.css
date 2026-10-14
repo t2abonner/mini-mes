@@ -7,22 +7,3 @@
   max-width: 720px;
   padding: 24px;
 }
-
-.toggleButton {
-  background-color: var(--color-primary);
-  border: 1px solid transparent;
-  border-radius: 6px;
-  color: var(--color-text-on-primary);
-  cursor: pointer;
-  font: inherit;
-  padding: 8px 16px;
-}
-
-.toggleButton:hover {
-  background-color: var(--color-primary-hover);
-}
-
-.toggleButton:focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 2px;
-}
