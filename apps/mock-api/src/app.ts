@@ -11,6 +11,9 @@ import type { Express } from 'express';
 export const createApp = (): Express => {
   const app = express();
 
+  // Не рекламируем стек в заголовках ответа: X-Powered-By снимаем намеренно.
+  app.disable('x-powered-by');
+
   // Тело будущих POST-запросов (завершение операции, фиксация брака)
   // приходит в JSON — подключаем парсер уже сейчас.
   app.use(express.json());
