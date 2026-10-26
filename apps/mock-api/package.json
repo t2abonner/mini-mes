@@ -2,5 +2,17 @@
   "name": "@mini-mes/mock-api",
   "version": "0.1.0",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.ts",
+    "start": "node src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "express": "^5.3.0"
+  },
+  "devDependencies": {
+    "@mini-mes/contracts": "*",
+    "@types/express": "^5.0.6"
+  }
 }
