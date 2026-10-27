@@ -3,6 +3,14 @@ import { db } from '../db.ts';
 import type { Session } from '../db.ts';
 import { generateToken } from './tokens.ts';
 
+/**
+ * Хранилище сессий авторизации.
+ *
+ * Истёкшие сессии не удаляются автоматически — для учебного стенда
+ * достаточно очистки при перезапуске процесса. В реальном бэкенде
+ * нужен фоновый воркер для периодической очистки или TTL в Redis.
+ */
+
 /** Создаёт новую сессию для пользователя и кладёт её в хранилище. */
 export const createSession = (userId: string): Session => {
   const now = Date.now();

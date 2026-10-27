@@ -2,6 +2,14 @@ import express from 'express';
 import type { Express } from 'express';
 import { authRouter } from './routes/auth.routes.ts';
 
+/**
+ * Создаёт Express-приложение мок-сервера.
+ *
+ * Приложение отделено от запуска (см. index.ts): так его можно
+ * будет в следующей задаче прикрепить к http-серверу вместе
+ * с Socket.IO, а позже — использовать в тестах без поднятия порта.
+ */
+
 export const createApp = (): Express => {
   const app = express();
   app.disable('x-powered-by');
