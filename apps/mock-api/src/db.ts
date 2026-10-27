@@ -4,13 +4,26 @@ import { shopTasks } from './data/shop-tasks.ts';
 import { users } from './data/users.ts';
 
 /**
- * In-memory «база данных» стенда (документ 6, §8.1–8.2).
- *
- * Перезапуск процесса возвращает данные в исходное состояние —
- * так задумано для учебного контура.
- *
- * Остальные коллекции из §8.2 (sessions, idempotencyStore,
- * movements, defects, notifications) будут добавляться по мере
- * реализации соответствующих эндпоинтов в следующих задачах.
+ * Сессия авторизации: связка пары непрозрачных токенов с пользователем.
+ * Сами токены ничего не содержат — сервер ищет по ним запись здесь
+ * (документ 6, §8.3).
  */
-export const db = { users, orders, machines, shopTasks };
+export interface Session {
+  accessToken: string;
+  refreshToken: string;
+  userId: string;
+  /** Момент (мс от эпохи), после которого access-токен не принимается. */
+  accessExpiresAt: number;
+  /** Момент истечения refresh-токена. */
+  refreshExpiresAt: number;
+  createdAt: number;
+}
+
+export const db = {
+  users,
+  orders,
+  machines,
+  shopTasks,
+  /** Активные сессии. Перезапуск процесса очищает хранилище. */
+  sessions: [] as Session[],
+};
