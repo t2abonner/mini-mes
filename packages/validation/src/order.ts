@@ -11,6 +11,8 @@ export const orderSchema = z.object({
   number: z.string().min(1),
   customerName: z.string().min(1),
   status: orderStatusSchema,
+  /** Фактическое начало (ISO 8601, UTC); отсутствует, если заказ не запускался. */
+  startedAt: z.iso.datetime().optional(),
   /** Плановое количество годных деталей. */
   totalPlannedQty: z.number().int().nonnegative(),
   /** Годные детали. */
