@@ -21,12 +21,15 @@ export const PERMISSIONS = {
   notificationsRead: 'notifications.read',
 } as const;
 
+/** Литеральный union всех кодов прав: опечатка станет ошибкой компиляции. */
+export type Permission = (typeof PERMISSIONS)[keyof typeof PERMISSIONS];
+
 /**
  * Матрица «роль → права» (документ 6, §9.3).
  * Держим её как единый объект: так и чтение, и будущие изменения
  * видны в одном месте.
  */
-const ROLE_PERMISSIONS: Record<Role, readonly string[]> = {
+const ROLE_PERMISSIONS: Record<Role, readonly Permission[]> = {
   shop_master: [
     PERMISSIONS.dashboardRead,
     PERMISSIONS.ordersRead,
@@ -50,7 +53,7 @@ const ROLE_PERMISSIONS: Record<Role, readonly string[]> = {
 };
 
 /** Есть ли у роли указанное право. */
-export const roleHasPermission = (role: Role, permission: string): boolean =>
+export const roleHasPermission = (role: Role, permission: Permission): boolean =>
   ROLE_PERMISSIONS[role].includes(permission);
 
 /**
@@ -64,7 +67,7 @@ export const roleHasPermission = (role: Role, permission: string): boolean =>
  * без деталей «какого именно права не хватило».
  */
 export const requirePermissions =
-  (...permissions: string[]) =>
+  (...permissions: Permission[]) =>
   (req: Request, res: Response, next: NextFunction): void => {
     const role = req.user?.role;
     if (!role) {
