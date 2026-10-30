@@ -47,11 +47,13 @@ dashboardRouter.get(
 );
 
 /** GET /api/v1/dashboard/machines — панель станков. */
+
 dashboardRouter.get(
   '/machines',
   requireAuth,
   requirePermissions(PERMISSIONS.dashboardRead),
-  (_req: Request, res: Response) => {
-    res.json(buildMachinesPage());
+  (req: Request, res: Response) => {
+    const pagination = parsePagination(req.query as Record<string, unknown>);
+    res.json(buildMachinesPage(pagination));
   },
 );

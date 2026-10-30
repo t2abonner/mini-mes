@@ -1,4 +1,4 @@
-import type { DashboardSummary } from '@mini-mes/contracts';
+import type { DashboardSummary, Machine, Paginated } from '@mini-mes/contracts';
 import { db } from '../db.ts';
 
 /**
@@ -91,5 +91,11 @@ export const buildOrdersPage = ({ page, pageSize }: PaginationParams) => {
   return { items, page, pageSize, totalItems };
 };
 
-/** Панель станков: полный список, сгруппирует уже клиент. */
-export const buildMachinesPage = () => db.machines;
+/** Панель станков — тот же конверт списка, что и у заказов (§13.1, §15.2 MES-MF). */
+export const buildMachinesPage = ({ page, pageSize }: PaginationParams): Paginated<Machine> => {
+  const sorted = [...db.machines].sort((a, b) => a.id.localeCompare(b.id));
+  const totalItems = sorted.length;
+  const start = (page - 1) * pageSize;
+  const items = sorted.slice(start, start + pageSize);
+  return { items, page, pageSize, totalItems };
+};
