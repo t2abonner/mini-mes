@@ -1,4 +1,9 @@
-import type { DashboardSummary, Machine, Paginated } from '@mini-mes/contracts';
+import type {
+  DashboardOrdersPage,
+  DashboardSummary,
+  Machine,
+  Paginated,
+} from '@mini-mes/contracts';
 import { db } from '../db.ts';
 
 /**
@@ -83,7 +88,7 @@ export const parsePagination = (query: Record<string, unknown>): PaginationParam
  * а управляющие параметры sortBy/sortDir появятся в задаче про
  * фильтры дашборда.
  */
-export const buildOrdersPage = ({ page, pageSize }: PaginationParams) => {
+export const buildOrdersPage = ({ page, pageSize }: PaginationParams): DashboardOrdersPage => {
   const sorted = [...db.orders].sort((a, b) => a.id.localeCompare(b.id));
   const totalItems = sorted.length;
   const start = (page - 1) * pageSize;
