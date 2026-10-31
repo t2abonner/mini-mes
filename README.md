@@ -84,7 +84,7 @@ mini-mes/
 | `npm run lint:format` | `prettier --check .` | ✅ работает |
 | `npm run format` | Автоформатирование всего проекта | ✅ работает |
 | `npm run test` | Тесты во всех воркспейсах (`--if-present`) | ✅ работает (сейчас только `validation`) |
-| `npm run storybook` | Storybook в `packages/ui` | ❌ не настроен — появится в спринте 2 |
+| `npm run storybook` | Storybook в `packages/ui` | ✅ работает |
 | `prepare` | `husky` — вызывается автоматически после `npm install` | ✅ работает |
 
 **Точечный запуск по воркспейсу** можно выполнять через флаг `-w`:
