@@ -141,3 +141,12 @@ test('zoneSchema принимает известные зоны и отклон�
   assert.equal(zoneSchema.safeParse('cutting').success, true);
   assert.equal(zoneSchema.safeParse('welding').success, false);
 });
+
+test('orderSchema: startedAt опционален и требует ISO 8601', () => {
+  assert.equal(orderSchema.safeParse(validOrder).success, true);
+  assert.equal(
+    orderSchema.safeParse({ ...validOrder, startedAt: '2026-06-10T08:15:00Z' }).success,
+    true,
+  );
+  assert.equal(orderSchema.safeParse({ ...validOrder, startedAt: 'вчера' }).success, false);
+});

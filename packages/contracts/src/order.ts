@@ -10,6 +10,9 @@ export interface Order {
   number: string;
   customerName: string;
   status: OrderStatus;
+  /** Фактическое начало производства (ISO 8601, UTC).
+   *  Отсутствует, если заказ ещё не запускался. */
+  startedAt?: string;
   /** Плановое количество годных деталей. */
   totalPlannedQty: number;
   /** Годные детали. */

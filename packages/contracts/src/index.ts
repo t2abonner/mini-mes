@@ -12,3 +12,4 @@ export type { Role } from './roles';
 export type { User } from './user';
 export type { ShopTask } from './shop-task';
 export type { AuthResponse, AuthUser, LoginRequest, RefreshResponse } from './auth';
+export type { DashboardOrdersPage, DashboardSummary, Paginated } from './dashboard';
