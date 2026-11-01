@@ -9,7 +9,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "express": "^5.3.0"
+    "express": "^5.3.0",
+    "socket.io": "^4.8.4"
   },
   "devDependencies": {
     "@mini-mes/contracts": "*",
