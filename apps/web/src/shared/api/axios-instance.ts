@@ -45,11 +45,16 @@ api.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
+    const PUBLIC_ENDPOINTS = ['/auth/login', '/auth/refresh'] as const;
+
+    const isPublicRequest = (url?: string): boolean =>
+      PUBLIC_ENDPOINTS.some((path) => url?.includes(path));
+
     // Защита от зацикливания: не пытаемся рефрешить сам запрос на refresh
     if (
       error.response?.status === 401 &&
       !originalRequest._retry &&
-      !originalRequest.url?.includes('/auth/refresh')
+      !isPublicRequest(originalRequest.url)
     ) {
       // Если уже идёт рефреш — добавляем в очередь и ждём
       if (isRefreshing) {
@@ -103,21 +108,17 @@ api.interceptors.response.use(
       }
     }
 
-    // Обработка других ошибок (403, 409, и т.д.)
+    // 403: сообщение о недостатке прав (тост подключим позже, пока — лог)
     if (error.response?.status === 403) {
-      // TODO: показать toast "Недостаточно прав"
+      // TODO(MM-308): показать toast «Недостаточно прав»
       console.error('Forbidden: недостаточно прав');
     }
 
-    if (error.response?.status === 409) {
-      // Пробрасываем дальше, чтобы UI мог обработать конфликт
-      return Promise.reject(error.response.data);
-    }
-
-    // Нормализация ошибки
+    // Единая нормализация для ВСЕХ ошибок, включая 409 и провалившийся 401:
     const normalizedError = {
-      errorCode: error.response?.data?.errorCode || 'UNKNOWN_ERROR',
-      message: error.response?.data?.message || 'Произошла ошибка',
+      status: error.response?.status as number | undefined,
+      errorCode: (error.response?.data?.errorCode as string | undefined) ?? 'UNKNOWN_ERROR',
+      message: (error.response?.data?.message as string | undefined) ?? 'Произошла ошибка',
     };
 
     return Promise.reject(normalizedError);
